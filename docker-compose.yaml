@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: '3.8'
+services:  
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: quetzalSoft07
+      MYSQL_DATABASE: cancuntours
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 80:8080
+  api:
+    hostname: '0.0.0.0'
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile
